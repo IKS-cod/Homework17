@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-           Validation.checkValidation("QQQoooo_uuuuuuuuuuu", "hfhfdjjdnvjdf", "hfhfdjjdnvjdf");
+           Validation.checkValidation("QQQoooo_uuuuuu_", "1", "1");
 
 
 
