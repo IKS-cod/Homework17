@@ -1,7 +1,12 @@
+import java.io.IOException;
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+           Validation.checkValidation("QQQoooo_uuuuuuuuuuu", "hfhfdjjdnvjdf", "hfhfdjjdnvjdf");
+
+
+
+
     }
-
-
 }
