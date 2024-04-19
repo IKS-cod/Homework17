@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Validation {
     private String login;
     private String password;
@@ -12,16 +14,55 @@ public class Validation {
         this.login = login;
         this.password = password;
         this.confirmPassword = confirmPassword;
+        checkValidation(login, password, confirmPassword);
     }
 
-    public static void checkValidation(String login, String password, String confirmPassword) {
+    private static void checkValidation(String login, String password, String confirmPassword) {
         try {
-            WrongLoginException.checkLogin(login);
-            WrongPasswordException.checkPasswordAndConfirmPassword(password, confirmPassword);
+            checkLogin(login);
+            checkPasswordAndConfirmPassword(password, confirmPassword);
         } catch (WrongLoginException | WrongPasswordException e) {
             System.out.println(e.getMessage());
         }
     }
+
+    private static void checkLogin(String login) throws WrongLoginException {
+        if (!checkSymbols(login)) {
+            throw new WrongLoginException("Login содержит недопустимые символы");
+        }
+    }
+
+    private static void checkPasswordAndConfirmPassword(String password, String confirmPassword) throws WrongPasswordException {
+        if (!checkSymbols(password)) {
+            throw new WrongPasswordException("Password содержит недопустимые символы");
+        }
+        char[] c = password.toCharArray();
+        char[] b = confirmPassword.toCharArray();
+        if (!Arrays.equals(c, b)) {
+            throw new WrongPasswordException("Password и ConfirmPassword не совпадают");
+        }
+    }
+
+    private static boolean checkSymbols(String a) {
+        boolean k = true;
+        char[] c = a.toCharArray();
+        int count = 0;
+        if (c.length <= 20) {
+            for (char item : c) {
+                for (char value : m) {
+                    if (item == value) {
+                        count++;
+                    }
+                }
+            }
+        }
+        if (count != c.length) {
+            k = false;
+        }
+        return k;
+    }
+
+
 }
 
 
